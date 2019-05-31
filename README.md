@@ -1,6 +1,4 @@
-# CSS
-CSS
-CSS, or Cascading Style Sheets, is a language that web developers use to style the HTML content on a web page. If you’re interested in modifying colors, font types, font sizes, shadows, images, element positioning, and more, CSS is the tool for the job!
+#CSS
 
 
 Rules:
@@ -10,6 +8,7 @@ Never to forget :
 3.)ALL HTML ELMENTS WILL HAVE DISPLAY FOR STYLING LIKE inline,inline-block,block etc..
 4.) know more on display:grid,flexbox --these are one-dimension meaning only rows
 5.) use grids for designing in two dimension--meaning rows and columns---
+6.)use hsl color and sans-serif-fonts (ex-arial)-make sure no more than 2 or 3 font-family exists in ui
 
 ****MOST IMP -- WHILE YOU CAN USE BOX MODEL,POISTION AND DISPLAY TO PUT ELMENTS-- THERE IS  MORE BETTER WAY --CALLED AS 'CSS GRIDS'--> THIS IS WHAT WE WILL USE as it is 2d -rows and columns
 
@@ -20,6 +19,10 @@ Never to forget :
 8.)in grid you add add rows/columns dynamically too using  (grid-auto-rows,grid-auto-columns,grid-auto-flow) --u need to remove height value from class of g_r_i_d --so it can overfloow
 9.)In grid u can remove width --so u can usminmax function--as it helps grid elments to grow or shrink based on content size..
 10.) know about box alignment -https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Box_Alignment_in_CSS_Grid_Layout
+11.) REMEMBER WAYS TO SHOW COLOR (NAME,HEXA,DECIMAL,HSL) --use hsl..also use opacity to mix color..
+12.) IF YOUR GIVEN Font is not on users computer-it will load default font "Times New Roman"--DO NOT include more than 2 or 3 fonts
+13.)Font use-sans serif--https://s3.amazonaws.com/codecademy-content/courses/web-101/htmlcss1-diagram__fontanatomy.svg
+14.)typeface(font-family), style(font-style:italic), weight(font-weight:bold|700), letter-spacing,word-spacing,text-transform,text-align,line-height..also know how to link google fonts -- (direct and using @font-face)
 
 Read from here------>
 bOX--
@@ -184,9 +187,49 @@ Most used style elemtns :-
 *color: maroon|teal;|rebeccapurple|SeaGreen|CornflowerBlue  //to color a text foreground
 *background-color //to color background  // this property styles an element’s background color
 *text-transform: uppercase|; //change to upper case
+
+--------TEXT|FONT STYLES----
 *font-family: cursive|Arial|Garamond|Courier New|Helvetica; (applied to h1,h2,h3,h4,h5,h6,p) (All fonts - https://www.cssfontstack.com/)
-*font-weight: bold|normal; (applied to h1,h2,h3,h4,h5,h6,p) 
+* font-family: "Garamond", "Times", serif; //use 'gramond' font for all. if garamong isnot there use "times" -if both are not there use 'serif-font' isntalled on user machine,.
+
+*font-style:italic|normal
+*font-weight: bold|normal|400|700|300 (400-default,700:bold,300:light); (applied to h1,h2,h3,h4,h5,h6,p) 
+*word-spacing: 0.3em; //You can also increase the spacing between words in a body of text, technically known as word spacing.
+*letter-spacing: 0.3em; //increasing the spacing between individual letters.
+*text-transform: uppercase;
+*text-align:right|left|center
+*line-height:1.2|12PX --> A unitless number, such as 1.2. This number is an absolute value that will compute the line height as a ratio of the font size.
 *text-align: right | left | center ;(applied to h1,h2,h3,h4,h5,h6,p.div--lets say u have content to show in center) 
+ **Know aht serif and sans-serif is -
+   *Serif - https://s3.amazonaws.com/codecademy-content/courses/web-101/htmlcss1-diagram__fontanatomy.svg
+
+You can link fonts from 'Googlr Fonts'  https://fonts.google.com/ - in 2 ways
+1.) Way 1- link directlyyou
+you can download multiple fonts and link them --https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-6/video-fonts/Google+Fonts+2.mov
+adding fonts-
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,700i|Playfair+Display:400,700,900i" rel="stylesheet">
+</head>
+
+2.)download and use @front-face --check this https://s3.amazonaws.com/codecademy-content/courses/freelance-1/unit-6/video-fonts/latin-fonts.mov
+example-
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Space Mono Bold'), local('SpaceMono-Bold'), url(https://fonts.gstatic.com/s/spacemono/v1/vdpMRWfyjfCvDYTz00NEPGaVI6zN22yiurzcBKxPjFE.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+copy froma  different place-
+@font-face {
+  font-family: "Roboto";
+  src: url(fonts/Roboto.woff2) format('woff2'),
+       url(fonts/Roboto.woff) format('woff'),
+       url(fonts/Roboto.tff) format('truetype');
+}
+--------------------------FONT EDN-----
+
 *opacity: 0.5; Opacity can be used to make elements fade into others for a nice overlay effect. To adjust the opacity of an element, the syntax looks like this: (applied to DIV or images,classes  or h1-h6 or anything --like a div which has text)
 *background-image: url("https://www.example.com/image.jpg"); // lets say you need to show an image in a page...u can do it via html or css..in css --first in html ass a div like <div class="image"> now in css define it like .image {bakground-image: url();}
 *list-style: square; // used to change li or ul items roudneed icon to square 
@@ -431,11 +474,42 @@ body {
   grid-auto-rows: 50px;
 }
 
-  
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------- 
  -->grid-auto-flow--> In addition to setting the dimensions of implicitly-added rows and columns, we can specify the order in which they are rendered. grid-auto-flow specifies whether new elements should be added to rows or columns.
 grid-auto-flow:row|column|dense (row-add to row,column-add to column,dense - his keyword invokes an algorithm that attempts to fill holes earlier in the grid layout if smaller elements are added)  
 example- grid-auto-flow: row dense; (you can pair them)
+
+
+-------------------------------------------------------------------COLOR--------------------------------------
+Color is of 2 types-- back and front ---it can set in below ways
+color:red;  (string)(only 147 named colors)
+color:  #8B4513; (hex)These are divided into 3 colors ->red,blue,green and each 2 letters is a hex decimal reprsenations of those colors.. (hexa is from 0-16) (https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+color: rgb(23, 45, 23); (decimal) (16 lakh colors)(showing red,green and blue) - Here, each of the three values represents a color component, and each can have a decimal number value from 0 to 255 (so total 256 * 256 * 256 = 16,77,216 color possibilites)
+color: hsl(120, 60%, 70%); // (hue,saturation lightness -hsl) (https://s3.amazonaws.com/codecademy-content/courses/learn-css-color/color_wheel_4_background.svg)
+ *Hue - angle on color weel 0:red,120:green,240:blue,360:red
+ *Saturation: intencity or purity of color ..goes from center of weel to top or end..
+ *lightness - how light or dark is color --50% normal lightness ,100% light :0% darker-makes it closer to block
+Opacity- color: hsla(34, 100%, 50%, 0.1); // Alpha is a decimal number from zero to one. If alpha is zero, the color will be completely transparent. If alpha is one, the color will be opaque. The value for half transparent would be 0.5.
+  * mixing back and forth colors..like backgrounda nd foregorund..
+  * can only be used with HSL and RGB
+  
+  
+  -------------------------------------------------------------------TYPHOGRPAHY--------------------------------------
+Color is of 2 types-- back and front ---it can set in below ways
+color:red;  (string)(only 147 named colors)
+color:  #8B4513; (hex)These are divided into 3 colors ->red,blue,green and each 2 letters is a hex decimal reprsenations of those colors.. (hexa is from 0-16) (https://developer.mozilla.org/en-US/docs/Web/CSS/color_value)
+color: rgb(23, 45, 23); (decimal) (16 lakh colors)(showing red,green and blue) - Here, each of the three values represents a color component, and each can have a decimal number value from 0 to 255 (so total 256 * 256 * 256 = 16,77,216 color possibilites)
+color: hsl(120, 60%, 70%); // (hue,saturation lightness -hsl) (https://s3.amazonaws.com/codecademy-content/courses/learn-css-color/color_wheel_4_background.svg)
+ *Hue - angle on color weel 0:red,120:green,240:blue,360:red
+ *Saturation: intencity or purity of color ..goes from center of weel to top or end..
+ *lightness - how light or dark is color --50% normal lightness ,100% light :0% darker-makes it closer to block
+Opacity- color: hsla(34, 100%, 50%, 0.1); // Alpha is a decimal number from zero to one. If alpha is zero, the color will be completely transparent. If alpha is one, the color will be opaque. The value for half transparent would be 0.5.
+  * mixing back and forth colors..like backgrounda nd foregorund..
+  * can only be used with HSL and RGB
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------------- DONE---------------------
+
+
+
+
 --->now lets see below
 -note- Note: CSS Grid is supported in the most recent versions of many browsers, but it is not supported universally. To make sure that you can get the most out of this course, check your browser version and see if it supports CSS Grid. If CSS Grid is not supported in your browser, you should switch or update to a supported browser and version.
 https://www.whatsmybrowser.org/
